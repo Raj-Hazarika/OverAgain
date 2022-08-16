@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Music & SFX/DoorOpen.wav" type="AudioStream" id=1]
+[ext_resource path="res://Scripts/Music_SFX.gd" type="Script" id=2]
+[ext_resource path="res://Music & SFX/Jump.wav" type="AudioStream" id=3]
+[ext_resource path="res://Music & SFX/Clicks.wav" type="AudioStream" id=4]
+[ext_resource path="res://Music & SFX/BG.wav" type="AudioStream" id=5]
+[ext_resource path="res://Music & SFX/Death.wav" type="AudioStream" id=6]
+[ext_resource path="res://Music & SFX/Walk.wav" type="AudioStream" id=7]
+
+[node name="Music_SFX" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 2 )
+
+[node name="DoorOpen" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="BG_Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -8.0
+autoplay = true
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="Walk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )

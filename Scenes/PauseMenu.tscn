@@ -1,0 +1,130 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Assets/play.png" type="Texture" id=1]
+[ext_resource path="res://Assets/pause.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Levels.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Home.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Music.png" type="Texture" id=5]
+[ext_resource path="res://Assets/NoMusic.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/PauseMenu.gd" type="Script" id=7]
+[ext_resource path="res://Assets/restart.png" type="Texture" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "Nomusic",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "Music",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Pause",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Play",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 25, 25 )
+
+[node name="PauseMenu" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Paused" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.34902, 0.34902, 0.34902, 0.52549 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BoxContainer" type="HBoxContainer" parent="Paused"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -528.0
+margin_top = -288.0
+margin_right = 528.0
+margin_bottom = 288.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Home" type="TouchScreenButton" parent="Paused/BoxContainer"]
+position = Vector2( 432.26, 220 )
+scale = Vector2( 5, 5 )
+normal = ExtResource( 4 )
+shape = SubResource( 1 )
+
+[node name="Music" type="TouchScreenButton" parent="Paused/BoxContainer"]
+position = Vector2( 719.198, 220 )
+scale = Vector2( 5, 5 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Paused/BoxContainer/Music"]
+position = Vector2( 8.08661, 8.08661 )
+frames = SubResource( 2 )
+animation = "Music"
+
+[node name="Levels" type="TouchScreenButton" parent="Paused/BoxContainer"]
+position = Vector2( 571.953, 220 )
+scale = Vector2( 5, 5 )
+normal = ExtResource( 3 )
+shape = SubResource( 1 )
+
+[node name="Retry" type="TouchScreenButton" parent="Paused/BoxContainer"]
+position = Vector2( 289.311, 220 )
+scale = Vector2( 5, 5 )
+normal = ExtResource( 8 )
+shape = SubResource( 3 )
+
+[node name="PauseColor" type="ColorRect" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -1056.0
+margin_bottom = 576.0
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="PauseColor"]
+position = Vector2( 1006.36, 47.8461 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 4 )
+animation = "Play"
+
+[node name="Pause" type="TouchScreenButton" parent="PauseColor"]
+position = Vector2( 981.428, 23.0812 )
+shape = SubResource( 5 )
+[connection signal="pressed" from="Paused/BoxContainer/Home" to="." method="_on_Home_pressed"]
+[connection signal="pressed" from="Paused/BoxContainer/Music" to="." method="_on_Music_pressed"]
+[connection signal="pressed" from="Paused/BoxContainer/Levels" to="." method="_on_Levels_pressed"]
+[connection signal="pressed" from="Paused/BoxContainer/Retry" to="." method="_on_Retry_pressed"]
+[connection signal="pressed" from="PauseColor/Pause" to="." method="_on_Pause_pressed"]

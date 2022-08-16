@@ -1,0 +1,234 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Assets/Ground3.png" type="Texture" id=1]
+[ext_resource path="res://Assets/HowTo.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/manaspc.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/NoMusic.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Music.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/BackButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/Settings.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Hint.png" type="Texture" id=8]
+[ext_resource path="res://Assets/lighting.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Button.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Credits.png" type="Texture" id=11]
+[ext_resource path="res://Scripts/BackButtonCredit.gd" type="Script" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+size = 80
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 3 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 30, 30 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "NoMusic",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "Music",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 32, 16 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 20
+extra_spacing_top = -1
+extra_spacing_char = -1
+font_data = ExtResource( 3 )
+
+[node name="Settings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.392157, 0.392157, 0.392157, 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -792.0
+margin_bottom = -432.0
+rect_scale = Vector2( 4, 4 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -212.0
+margin_top = 40.0
+margin_right = 212.0
+margin_bottom = 120.0
+custom_fonts/font = SubResource( 1 )
+text = "SETTINGS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" parent="." instance=ExtResource( 6 )]
+
+[node name="HowTo" type="Sprite" parent="."]
+position = Vector2( 430.686, 312.518 )
+scale = Vector2( 20, 10 )
+texture = ExtResource( 2 )
+
+[node name="HowTo2" type="Label" parent="HowTo"]
+anchor_left = 0.00625038
+anchor_right = 1.00625
+anchor_bottom = 1.0
+margin_left = -8.0
+margin_top = -4.7242
+margin_right = 295.0
+margin_bottom = 10.2758
+rect_scale = Vector2( 0.05, 0.1 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0.517647, 0.517647, 1 )
+text = "HOW TO PLAY?"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HowTo"]
+margin_left = -6.01891
+margin_top = -0.405396
+margin_right = 214.981
+margin_bottom = 64.5946
+rect_scale = Vector2( 0.05, 0.1 )
+custom_fonts/font = SubResource( 3 )
+text = "Think creatively!
+That's it..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music" type="TouchScreenButton" parent="."]
+position = Vector2( 688.002, 337.343 )
+shape = SubResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Music"]
+position = Vector2( 29.9979, 29.7904 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 5 )
+animation = "NoMusic"
+
+[node name="Hints" type="TouchScreenButton" parent="."]
+position = Vector2( 667.672, 213.588 )
+scale = Vector2( 6, 6 )
+normal = ExtResource( 8 )
+shape = SubResource( 6 )
+
+[node name="Light2D" type="Light2D" parent="Hints"]
+position = Vector2( 8.0863, 8.1485 )
+scale = Vector2( 0.166667, 0.166667 )
+texture = ExtResource( 9 )
+texture_scale = 0.5
+energy = 0.7
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 540.493, 283.002 )
+texture = ExtResource( 9 )
+energy = 0.5
+
+[node name="Credits" type="TouchScreenButton" parent="."]
+position = Vector2( 419.486, 502.862 )
+scale = Vector2( 3, 1.5 )
+normal = ExtResource( 10 )
+shape = SubResource( 7 )
+
+[node name="Label" type="Label" parent="Credits"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 3.24634
+margin_right = 129.0
+margin_bottom = 19.2463
+rect_scale = Vector2( 0.33, 0.66 )
+custom_fonts/font = SubResource( 8 )
+text = "CREDITS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditsShow" type="Sprite" parent="."]
+pause_mode = 2
+visible = false
+position = Vector2( 513.143, 329.942 )
+scale = Vector2( 10, 8 )
+texture = ExtResource( 11 )
+
+[node name="BackButton" parent="CreditsShow" instance=ExtResource( 6 )]
+margin_left = -16.4132
+margin_top = -15.3718
+margin_right = 1039.59
+margin_bottom = 560.628
+rect_scale = Vector2( 0.07, 0.08 )
+script = ExtResource( 12 )
+
+[node name="TouchScreenButton" parent="CreditsShow/BackButton" index="0"]
+position = Vector2( -28.6086, -38.0277 )
+
+[node name="Label" type="Label" parent="CreditsShow"]
+margin_left = -15.241
+margin_top = -12.1693
+margin_right = 305.759
+margin_bottom = 237.831
+rect_scale = Vector2( 0.1, 0.125 )
+custom_fonts/font = SubResource( 9 )
+text = "Everything including artworks, music, SFX, level design, game mechanics etc are created by a sole developer.
+
+For more info, contact:
+MAIL:
+TWITTER: "
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mail_twitter" type="Label" parent="CreditsShow"]
+margin_left = -8.22171
+margin_top = 6.94551
+margin_right = 143.778
+margin_bottom = 37.9455
+rect_scale = Vector2( 0.15, 0.17 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "indie.drh10@gmail.com
+     @RajDikhit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Music" to="." method="_on_Music_pressed"]
+[connection signal="pressed" from="Hints" to="." method="_on_Hints_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_Credits_pressed"]
+
+[editable path="CreditsShow/BackButton"]

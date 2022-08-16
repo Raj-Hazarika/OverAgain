@@ -1,0 +1,227 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Assets/MainMenu.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Button.png" type="Texture" id=2]
+[ext_resource path="res://Assets/lighting.png" type="Texture" id=3]
+[ext_resource path="res://Fonts/manaspc.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/SmallBoy-Sheet.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Tileset.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Hint.png" type="Texture" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 70
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 36
+extra_spacing_char = -4
+font_data = ExtResource( 4 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+font_data = ExtResource( 4 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 5 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 5 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 5 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "iDLE",
+"speed": 3.0
+} ]
+
+[sub_resource type="TileSet" id=10]
+0/name = "Tileset.png 0"
+0/texture = ExtResource( 7 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 80, 64 )
+0/tile_mode = 1
+0/autotile/bitmask_mode = 2
+0/autotile/bitmask_flags = [ Vector2( 0, 0 ), 432, Vector2( 0, 1 ), 438, Vector2( 0, 2 ), 54, Vector2( 0, 3 ), 48, Vector2( 1, 0 ), 504, Vector2( 1, 1 ), 511, Vector2( 1, 2 ), 63, Vector2( 1, 3 ), 56, Vector2( 2, 0 ), 216, Vector2( 2, 1 ), 219, Vector2( 2, 2 ), 27, Vector2( 2, 3 ), 24, Vector2( 3, 0 ), 16, Vector2( 4, 0 ), 144, Vector2( 4, 1 ), 146, Vector2( 4, 2 ), 18 ]
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 16, 16 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="Animation" id=11]
+resource_name = "Fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="PLAY" type="TouchScreenButton" parent="Buttons"]
+position = Vector2( 263.355, 307.798 )
+scale = Vector2( 4.5, 4 )
+normal = ExtResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="Buttons/PLAY"]
+position = Vector2( 32.9117, 16.9986 )
+texture = ExtResource( 3 )
+texture_scale = 0.1
+energy = 0.7
+
+[node name="Label" type="Label" parent="Buttons/PLAY"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 189.0
+margin_bottom = 79.0
+rect_scale = Vector2( 0.25, 0.33 )
+custom_fonts/font = SubResource( 1 )
+text = "PLAY"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SETTINGS" type="TouchScreenButton" parent="Buttons"]
+position = Vector2( 599.686, 299.279 )
+scale = Vector2( 3, 2 )
+normal = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="Buttons/SETTINGS"]
+margin_left = 5.12564
+margin_top = 7.81207
+margin_right = 169.126
+margin_bottom = 43.8121
+rect_scale = Vector2( 0.33, 0.5 )
+custom_fonts/font = SubResource( 2 )
+text = "Settings"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Levels" type="TouchScreenButton" parent="Buttons"]
+position = Vector2( 601.101, 374.939 )
+scale = Vector2( 3, 2 )
+normal = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="Buttons/Levels"]
+margin_left = 12.1191
+margin_top = 8.33371
+margin_right = 136.119
+margin_bottom = 44.3337
+rect_scale = Vector2( 0.33, 0.5 )
+custom_fonts/font = SubResource( 2 )
+text = "Levels"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hint" type="TouchScreenButton" parent="Buttons"]
+position = Vector2( 37.755, 37.755 )
+scale = Vector2( 6, 6 )
+normal = ExtResource( 8 )
+shape = SubResource( 3 )
+
+[node name="Light2D" type="Light2D" parent="Buttons/Hint"]
+position = Vector2( 8.84002, 6.30751 )
+scale = Vector2( 0.75, 0.666667 )
+texture = ExtResource( 3 )
+texture_scale = 0.05
+energy = 0.8
+
+[node name="Label" type="Label" parent="Buttons/Hint"]
+margin_left = 2.85197
+margin_top = 17.0
+margin_right = 67.852
+margin_bottom = 37.0
+rect_scale = Vector2( 0.166, 0.166 )
+custom_fonts/font = SubResource( 4 )
+text = "HINTS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.533333, 0.533333, 0.533333, 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 294.446, 242.29 )
+scale = Vector2( 2.5, 2.5 )
+frames = SubResource( 9 )
+animation = "iDLE"
+frame = 1
+playing = true
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 4, 4 )
+tile_set = SubResource( 10 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 262144, 0, 0, 262145, 0, 1, 262146, 0, 2, 327680, 0, 131072, 327681, 0, 131073, 327682, 0, 131074, 327694, 0, 0, 327695, 0, 1, 327696, 0, 2, 393230, 0, 131072, 393231, 0, 131073, 393232, 0, 131074, 524292, 0, 196608, 524293, 0, 196609, 524294, 0, 196609, 524295, 0, 196609, 524296, 0, 196609, 524297, 0, 196609, 524298, 0, 196609, 524299, 0, 196609, 524300, 0, 196610 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Fade = SubResource( 11 )
+[connection signal="pressed" from="Buttons/PLAY" to="." method="_on_PLAY_pressed"]
+[connection signal="pressed" from="Buttons/SETTINGS" to="." method="_on_SETTINGS_pressed"]
+[connection signal="pressed" from="Buttons/Levels" to="." method="_on_Levels_pressed"]
+[connection signal="pressed" from="Buttons/Hint" to="." method="_on_Hint_pressed"]

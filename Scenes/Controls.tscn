@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/ArrowKeys.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6, 4 )
+
+[node name="Controls" type="Node"]
+
+[node name="Up" type="TouchScreenButton" parent="."]
+position = Vector2( 820, 460 )
+scale = Vector2( 8, 8 )
+normal = ExtResource( 1 )
+shape = SubResource( 1 )
+
+[node name="Right" type="TouchScreenButton" parent="."]
+position = Vector2( 346.87, 450.982 )
+rotation = 1.5708
+scale = Vector2( 9, 9 )
+normal = ExtResource( 1 )
+shape = SubResource( 1 )
+
+[node name="Left" type="TouchScreenButton" parent="."]
+position = Vector2( 61.591, 595.029 )
+rotation = -1.5708
+scale = Vector2( 9, 9 )
+normal = ExtResource( 1 )
+shape = SubResource( 1 )
